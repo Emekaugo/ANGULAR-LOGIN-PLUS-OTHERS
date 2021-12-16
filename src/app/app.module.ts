@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import { AngularMaterialModule } from './angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -47,9 +50,35 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { ZComponentComponent } from './components/z-component/z-component.component';
 import { ZDirectiveDirective } from './directives/z-directive.directive';
+import { LogInComponent } from './components/log-in/log-in.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AlertComponent } from './components/alert/alert.component';
+
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { LoginAppComponent } from './components/login-app/login-app.component';
+import { RegAppComponent } from './components/reg-app/reg-app.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { BoardAdminComponent } from './components/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './components/board-user/board-user.component';
 
 @NgModule({
-  declarations: [AppComponent, ZComponentComponent, ZDirectiveDirective],
+  declarations: [
+    AppComponent,
+    ZComponentComponent,
+    ZDirectiveDirective,
+    LogInComponent,
+    RegisterComponent,
+    AlertComponent,
+    LoginAppComponent,
+    RegAppComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -58,6 +87,9 @@ import { ZDirectiveDirective } from './directives/z-directive.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
+    AngularMaterialModule,
+    FlexLayoutModule,
 
     MatAutocompleteModule,
     MatButtonModule,
@@ -92,7 +124,8 @@ import { ZDirectiveDirective } from './directives/z-directive.directive';
     MatPaginatorModule,
     MatFormFieldModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
